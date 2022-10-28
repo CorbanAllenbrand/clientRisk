@@ -13,16 +13,13 @@ mplr <- function(data, output.file.name){
   glm_mod <- glm(lost_event ~ week_num + sf_cases + billing_errors+ median_tat + idaa_electronic_ratio + ncs_calls + nof + tiq + tnp,
                family = "binomial",
                data = data)
-    )
   
 plot1 <- modelsummary::modelplot(glm_mod, exponentiate = TRUE) + ggplot2::theme_bw()
 
-suppressWarnings(
 glm_step <- MASS::stepAIC(glm_mod, 
                     direction = "backward", 
                     trace = F,
                     data = data)
-  )
 
 stargazer::stargazer(glm_mod,glm_step, type="html", align=TRUE, out=output.file.name,
           title = "Mulitple Period Logistic Regression Results",
