@@ -7,7 +7,7 @@
 rf <- function(data){
   
   rf_model <- randomForestSRC::rfsrc(Surv(week_num, lost_event) ~ sf_cases + billing_errors + tiq + median_tat + idaa_electronic_ratio + nof + ncs_calls + tnp,
-                    data = cmt_data,
+                    data = data,
                     ntree=1000,
                     importance = "permute")
   
