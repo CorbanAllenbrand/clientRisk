@@ -6,9 +6,6 @@
 
 import_snowflake_tat_data <- function(files){
   
-  suppressWarnings()
-  suppressMessages()
-  
   data <- vector("list", length = length(files))
   
   for(i in 1:length(files)){
