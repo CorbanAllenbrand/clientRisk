@@ -6,9 +6,8 @@
 
 rf <- function(data){
   
-  suppressWarnings()
-  suppressMessages()
-  
+
+  suppressMessages(
   rf_model <- randomForestSRC::rfsrc(Surv(week_num, lost_event) ~ sf_cases + billing_errors + tiq + median_tat + idaa_electronic_ratio + nof + ncs_calls + tnp,
                     data = data,
                     ntree=1000,
@@ -28,5 +27,6 @@ rf <- function(data){
   return(list(rf.model = rf_model,
               variable.importance1 = plot1,
               variable.importance2 = plot2))
+    )
   
 }
