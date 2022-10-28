@@ -6,6 +6,9 @@
 
 survival_regression <- function(data){
   
+  suppressWarnings()
+  suppressMessages()
+  
   surv_mod <- survival::coxph(Surv(start, end, lost_event) ~ sf_cases + billing_errors + tiq + median_tat + idaa_electronic_ratio + nof + ncs_calls + tnp,
                     data = data)
   
