@@ -4,7 +4,7 @@
 #' @param data Data set to be used in model fitting.
 #' @export
 
-survival_regresion <- function(data){
+survival_regression <- function(data){
   
   surv_mod <- survival::coxph(Surv(start, end, lost_event) ~ sf_cases + billing_errors + tiq + median_tat + idaa_electronic_ratio + nof + ncs_calls + tnp,
                     data = data)
