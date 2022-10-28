@@ -6,7 +6,8 @@
 
 survival_regression <- function(data){
   
-  suppressWarnings(
+  oldw <- getOption("warn")
+  options(warn = -1)
   
   surv_mod <- survival::coxph(Surv(start, end, lost_event) ~ sf_cases + billing_errors + tiq + median_tat + idaa_electronic_ratio + nof + ncs_calls + tnp,
                     data = data)
@@ -25,7 +26,7 @@ survival_regression <- function(data){
   plot3 <- modelsummary::modelplot(surv_mod, exponentiate = T)+ ggplot2::scale_color_brewer(type="qual")+ggplot2::theme_bw()
   plot4 <- modelsummary::modelplot(step_surv_mod, exponentiate = T)
     
-    )
+  options(warn = oldw)
   
   return(list(survival_full_model = surv_mod,
               survival_simplified_model = step_surv_mod,
