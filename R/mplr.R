@@ -7,7 +7,9 @@
 
 mplr <- function(data, output.file.name){
   
-  suppressWarnings(
+  oldw <- getOption("warn")
+  options(warn = -1)
+  
   glm_mod <- glm(lost_event ~ week_num + sf_cases + billing_errors+ median_tat + idaa_electronic_ratio + ncs_calls + nof + tiq + tnp,
                family = "binomial",
                data = data)
@@ -29,6 +31,8 @@ stargazer::stargazer(glm_mod,glm_step, type="html", align=TRUE, out=output.file.
 
 plot2 <- modelsummary::modelplot(glm_step, exponentiate = TRUE) + ggplot2::theme_bw()
 
+options(warn = oldw)
+  
 return(list(mlpr.full = glm_mod,
             mlpr.reduced = glm_step,
             mlpr.full.results = plot1,
