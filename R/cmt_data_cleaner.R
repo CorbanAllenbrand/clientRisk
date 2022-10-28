@@ -8,9 +8,6 @@
 
 cmt_data_cleaner <- function(cognos.data, clientstatus.data, tat.data){
   
-  suppressWarnings()
-  suppressMessages()
-  
   cmt_data <- cognos.data
   client_status <- clientstatus.data
   tat_data <- tat.data
