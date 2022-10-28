@@ -6,6 +6,9 @@
 #' @export
 
 mplr <- function(data, output.file.name){
+  
+  suppressWarnings()
+  suppressMessages()
 
   glm_mod <- glm(lost_event ~ week_num + sf_cases + billing_errors+ median_tat + idaa_electronic_ratio + ncs_calls + nof + tiq + tnp,
                family = "binomial",
