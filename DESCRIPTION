@@ -1,0 +1,21 @@
+Package: clientRisk
+Title: Prepares Data and Estimates Client Risk Models
+Version: 0.0.0.9000
+Authors@R: 
+    person("Corban", "Allenbrand", email = "corban.z.allenbrand@questdiagnostics.com", role = c("aut", "cre"))
+Description: Functions that prepare data for input into client risk models. Client risk models are addressable via function calls.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Depends:
+  dplyr,
+  ggplot2,
+  survival,
+  survminer,
+  modelsummary,
+  randomForestSRC,
+  ggRandomForests,
+  MASS,
+  stargazer
