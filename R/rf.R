@@ -23,10 +23,11 @@ rf <- function(data){
   rf_md <- randomForestSRC::var.select(rf_model, verbose = FALSE)
   ggMindepth <- ggRandomForests:::gg_minimal_depth(rf_md, )
   plot2 <- plot(ggMindepth)
+    )
   
   return(list(rf.model = rf_model,
               variable.importance1 = plot1,
               variable.importance2 = plot2))
-    )
+    
   
 }
