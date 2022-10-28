@@ -5,9 +5,7 @@
 #' @export
 
 import_cognos_data <- function(files){
-  
-  suppressWarnings()
-  suppressMessages()
+ 
   
   data <- vector("list", length = length(files))
   
