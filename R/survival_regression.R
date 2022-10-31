@@ -16,7 +16,7 @@ survival_regression <- function(data){
                         direction = "backward", 
                         trace = F)
   
-  if(surv_mod$iter = 0){
+  if(surv_mod$iter == 0){
     exit("Not enough data, need more "Lost" clients")
     }
   
