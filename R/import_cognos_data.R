@@ -21,6 +21,8 @@ import_cognos_data <- function(files){
   names(cognos)[which(names(cognos) %in% c("tnp_release_date"))] <- "tnp"
   names(cognos)[which(names(cognos) %in% c("billing_errors_total"))] <- "billing_errors"
   
+  cognos <- cognos[complete.cases(cognos),]
+ 
   return(cognos)
   
 }
