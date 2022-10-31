@@ -67,7 +67,7 @@ cmt_data_cleaner <- function(cognos.data, status.data, tat.data){
   ### status of that client as "lost" or "saved" and the date the last Salesforce
   ### case was closed, which proxies for the date the client was lost. 
   
-  close_split <- stringr::str_split(client_status$date_closed," ")
+  close_split <- stringr::str_split(client_status$closed_date," ")
   date_closed <- lapply(close_split, function(x){
     stringr::str_trim(x[1])
   })
