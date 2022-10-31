@@ -17,7 +17,7 @@ survival_regression <- function(data){
                         trace = F)
   
   if(surv_mod$iter == 0){
-    exit("Not enough data, need more 'Lost' clients")
+    stop("Algorithm could not start, might be because of not enough data, need more 'Lost' clients.")
     }
   
   plot1 <- survminer::ggforest(surv_mod, 
