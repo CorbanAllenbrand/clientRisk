@@ -16,6 +16,10 @@ survival_regression <- function(data){
                         direction = "backward", 
                         trace = F)
   
+  if(surv_mod$iter = 0){
+    exit("Not enough data, need more "Lost" clients")
+    }
+  
   plot1 <- survminer::ggforest(surv_mod, 
              data=data,
              main = "Client Survival Regression Results")
