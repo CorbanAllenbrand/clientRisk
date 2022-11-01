@@ -6,7 +6,7 @@
 #' @param tat.data Data that comes from Snowflake.
 #' @export
 
-cmt_data_cleaner <- function(cognos.data, status.data, tat.data){
+data_cleaner <- function(cognos.data, status.data, tat.data){
   
   cmt_data <- cognos.data
   client_status <- status.data
