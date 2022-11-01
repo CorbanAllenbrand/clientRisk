@@ -4,7 +4,7 @@
 #' @param files A list of files that were exported from Snowflake.
 #' @export
 
-import_snowflake_tat_data <- function(files){
+import_tat_data <- function(files){
   
   data <- vector("list", length = length(files))
   
