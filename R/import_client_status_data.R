@@ -16,6 +16,8 @@ import_client_status_data <- function(files){
   
   client <- do.call(rbind,data)
   
+  client$at_risk_case_final_status <- ifelse(client$at_risk_case_final_status %in% c("Partial-Lost"),"Lost",client$at_risk_case_final_status)
+  
   client <- client[which(client$at_risk_case_final_status %in% c("Saved","Lost")),]
   
   return(client)
