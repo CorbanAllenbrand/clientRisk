@@ -7,7 +7,7 @@
 survival_regression(data)
 }
 \arguments{
-\item{data}{Data set to be used in model fitting.}
+\item{data}{Data set to be used in model fitting. Data set is obtained from the data_cleaner() function.}
 }
 \description{
 This function allows you to fit survival regression, survival regression with backwards stepwise selectoin, and print results.
