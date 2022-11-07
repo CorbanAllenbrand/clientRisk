@@ -7,9 +7,9 @@
 mplr(data, output.file)
 }
 \arguments{
-\item{data}{Data set that is used in the model estimation.}
+\item{data}{Data set that is used in the model estimation. Data set is obtained by using the data_cleaner() function.}
 
-\item{output.file}{Name of a html file that the model result table is printed to.}
+\item{output.file}{Name of a html file that the model result table is printed to. The file extension for this should be ".html"}
 }
 \description{
 This function allows you to estimate multiple period logistic regression model, a mulitple period logistic regression model with backwards stepwise selection, and print out results.
