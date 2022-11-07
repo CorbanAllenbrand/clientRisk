@@ -5,7 +5,7 @@
 #' @param output.file.name Name of a html file that the model result table is printed to. The file extension for this should be ".html"
 #' @export
 
-mplr <- function(data, output.file.name){
+mplr <- function(data, output.file){
   
   oldw <- getOption("warn")
   options(warn = -1)
@@ -20,11 +20,14 @@ glm_step <- MASS::stepAIC(glm_mod,
                     direction = "backward", 
                     trace = F,
                     data = data)
-
-stargazer::stargazer(glm_mod,glm_step, type="html", align=TRUE, out=output.file.name,
+  
+output <- capture.output(stargazer::stargazer(glm_mod,glm_step, type="html", align=TRUE, out=output.file.name,
           title = "Mulitple Period Logistic Regression Results",
           ci=TRUE, ci.level=0.95,
-          column.labels=c("Pre-Selection","Post-Selection"))
+          column.labels=c("Pre-Selection","Post-Selection")))
+  
+ cat(paste(output, collapse = "\n"), "\n", file=output.file, append=TRUE)
+
 
 plot2 <- modelsummary::modelplot(glm_step, exponentiate = TRUE) + ggplot2::theme_bw()
 
