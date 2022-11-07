@@ -10,5 +10,5 @@ rf(data)
 \item{data}{Data set to be used in model fitting.}
 }
 \description{
-This function allows you to fit a random forest with surival regression model and get variable importance of the input features.
+This function allows you to fit a random forest with surival regression model and get variable importance of the input features. First plot "plot1" returns variable importance in terms of VIMP where the higher the VIMP value the more important the variable is. Second plot "plot2" returns variable importance according to minimum depth of tree where the smaller the depth the more important a variable is.
 }
