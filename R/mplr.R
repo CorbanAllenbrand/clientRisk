@@ -2,7 +2,7 @@
 #'
 #' This function allows you to estimate a multiple period logistic regression model, a mulitple period logistic regression model with backwards stepwise selection, and print out results.
 #' @param data Data set that is used in the model estimation. Data set is obtained by using the data_cleaner() function.
-#' @param output.file.name Name of a html file that the model result table is printed to. The file extension for this should be ".html"
+#' @param output.file Name of a html file that the model result table is printed to. The file extension for this should be ".html"
 #' @export
 
 mplr <- function(data, output.file){
