@@ -1,7 +1,7 @@
 #' Survival Regression Function
 #'
-#' This function allows you to fit survival regression, survival regression with backwards stepwise selectoin, and print results.
-#' @param data Data set to be used in model fitting.
+#' This function allows you to fit survival regression, survival regression with backwards stepwise selection, and print results.
+#' @param data Data set to be used in model fitting. Data set is obtained from the data_cleaner() function.
 #' @export
 
 survival_regression <- function(data){
