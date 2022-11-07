@@ -26,7 +26,7 @@ output <- capture.output(stargazer::stargazer(glm_mod,glm_step, type="html", ali
           ci=TRUE, ci.level=0.95,
           column.labels=c("Pre-Selection","Post-Selection")))
   
- cat(paste(output, collapse = "\n"), "\n", file=output.file, append=TRUE)
+ cat(paste(output, collapse = "\n"), "\n", file=output.file)
 
 
 plot2 <- modelsummary::modelplot(glm_step, exponentiate = TRUE) + ggplot2::theme_bw()
