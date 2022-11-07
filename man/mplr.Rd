@@ -4,13 +4,13 @@
 \alias{mplr}
 \title{Multiple Period Logistic Regression Function}
 \usage{
-mplr(data, output.file.name)
+mplr(data, output.file)
 }
 \arguments{
 \item{data}{Data set that is used in the model estimation.}
 
-\item{output.file.name}{Name of a html file that the model result table is printed to.}
+\item{output.file}{Name of a html file that the model result table is printed to.}
 }
 \description{
-This function allows you to estimate multiple period logistic regression model, a mulitple period logistic regression model with backwards stepwise slectoin, and print out results.
+This function allows you to estimate multiple period logistic regression model, a mulitple period logistic regression model with backwards stepwise selection, and print out results.
 }
