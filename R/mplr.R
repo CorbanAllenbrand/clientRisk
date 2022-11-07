@@ -21,7 +21,7 @@ glm_step <- MASS::stepAIC(glm_mod,
                     trace = F,
                     data = data)
   
-output <- capture.output(stargazer::stargazer(glm_mod,glm_step, type="html", align=TRUE, out=output.file.name,
+output <- capture.output(stargazer::stargazer(glm_mod,glm_step, type="html", align=TRUE, out=output.file,
           title = "Mulitple Period Logistic Regression Results",
           ci=TRUE, ci.level=0.95,
           column.labels=c("Pre-Selection","Post-Selection")))
