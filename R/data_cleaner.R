@@ -73,7 +73,7 @@ data_cleaner <- function(cognos.data, status.data, tat.data){
   })
   client_status$date_closed <- lubridate::mdy(date_closed)
   client_status <- subset(client_status,
-                          select=c("account_number",
+                          select=c("account_name",
                                    "at_risk_case_final_status",
                                    "date_closed")
                           )
@@ -84,11 +84,11 @@ data_cleaner <- function(cognos.data, status.data, tat.data){
       client_status$risk_status[i] <- "Lost"
     }
   }
-  unique_client <- unique(client_status$account_number)
+  unique_client <- unique(client_status$account_name)
   unique_status <- NULL
   unique_date_closed <- NULL
   for( i in unique_client){
-    ind1 <- which(client_status$account_number == i)
+    ind1 <- which(client_status$account_name == i)
     ind2 <- which.min(client_status$date_closed[ind1])
     ind3 <- ind1[ind2]
     unique_status <- c(unique_status,
@@ -99,7 +99,7 @@ data_cleaner <- function(cognos.data, status.data, tat.data){
                             )
   }
   
-  status_closed_df <- data.frame(account_number = unique_client,
+  status_closed_df <- data.frame(account_name = unique_client,
                                  risk_status = unique_status,
                                  date_closed = unique_date_closed)
   
@@ -116,8 +116,8 @@ data_cleaner <- function(cognos.data, status.data, tat.data){
   ### which measures the proportion of requisitions that were electronic of
   ### all recorded requisitions in a week.
   
-  for(i in unique(new_cmt_data$account_number)){
-    index <- which(new_cmt_data$account_number == i)
+  for(i in unique(new_cmt_data$account_name)){
+    index <- which(new_cmt_data$account_name == i)
     if(all(new_cmt_data$risk_status[index] == "Lost")){
       bool <- new_cmt_data$begin_of_week[index] > new_cmt_data$date_closed[index]
       if(any(bool) == T){
@@ -131,8 +131,8 @@ data_cleaner <- function(cognos.data, status.data, tat.data){
   
   new_cmt_data$lost_event <- rep(0,nrow(new_cmt_data))
   
-  for(i in unique(new_cmt_data$account_number)){
-    index <- which(new_cmt_data$account_number == i)
+  for(i in unique(new_cmt_data$account_name)){
+    index <- which(new_cmt_data$account_name == i)
     df <- new_cmt_data[index,]
     if(all(df$risk_status == "Lost")){
       new_cmt_data$lost_event[index[new_cmt_data$week_num[index] == max(as.numeric(new_cmt_data$week_num[index]))]] <- 1
@@ -153,9 +153,9 @@ data_cleaner <- function(cognos.data, status.data, tat.data){
   ### between weeks is ignored by this approximation and might discard some 
   ### information.
 
-  for(i in unique(tat_data$account_number)){
-    index <- which(tat_data$account_number == i)
-    bool <- tat_data$entry_date[index] > new_cmt_data$date_closed[new_cmt_data$account_number == i][1]
+  for(i in unique(tat_data$account_name)){
+    index <- which(tat_data$account_name == i)
+    bool <- tat_data$entry_date[index] > new_cmt_data$date_closed[new_cmt_data$account_name == i][1]
     if(any(is.na(bool))){
       tat_data <- tat_data[-(index[is.na(bool)]),]
     } else if(any(bool) == T){
@@ -163,10 +163,10 @@ data_cleaner <- function(cognos.data, status.data, tat.data){
     }
   }
   
-  tat_df <- dplyr::group_by(tat_data,account_number) %>%
+  tat_df <- dplyr::group_by(tat_data,account_name) %>%
     dplyr::summarize(median_tat = median(tat))
   
-  final_cmt_data <- merge(new_cmt_data,tat_df,by="account_number")
+  final_cmt_data <- merge(new_cmt_data,tat_df,by="account_name")
   
   final_cmt_data$id <- NULL
   
